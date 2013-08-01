@@ -1,17 +1,17 @@
 require(shiny)
 require(rCharts)
 shinyUI(pageWithSidebar(
-  headerPanel('DataTables in Shiny with rCharts'),
+  headerPanel('rCharts Dimple plot Builder'),
   sidebarPanel(
     selectInput('dataset', 'Choose DataSet',
-                c('haireye', 'mtcars', 'iris', 'faithful')            
+                data()$results[,3]         
     ),
     selectInput('chartType', 'Type of Chart',
                 c('line','bubble','bar')),
     selectInput('xType', 'Type of x Axis',
-                c('addCategoryAxis','addMeasureAxis')),
+                c('addCategoryAxis','addMeasureAxis'), selected = NULL),
     selectInput('yType', 'Type of y Axis',
-                c('addMeasureAxis','addCategoryAxis')),
+                c('addMeasureAxis','addCategoryAxis'), selected = NULL),
     uiOutput('variableControls')           
   ),
   mainPanel(

@@ -4,9 +4,7 @@ require(data.table)
 
 shinyServer(function(input, output, session){
   mydata <- reactive({
-    switch(input$dataset, haireye = data.frame(HairEyeColor),mtcars = mtcars, iris = iris,
-           faithful = data.table(faithful)
-    )
+    get(input$dataset)
   })
   
   output$variableControls <- renderUI({
