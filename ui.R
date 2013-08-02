@@ -1,17 +1,26 @@
 require(shiny)
 require(rCharts)
-shinyUI(pageWithSidebar(
-  headerPanel('rCharts Dimple plot Builder'),
+shinyUI(bootstrapPage(
+  tagList(
+    tags$head(
+      tags$script(src = 'js/jquery-ui.min.js'),
+      tags$script(src = 'js/mustache.js'),
+      tags$script(src = 'js/underscore.js'),
+      tags$script(src = 'js/selleckt.js'),
+      tags$link(rel = 'stylesheet', href ='css/selleckt.css')
+    ),
+    headerPanel('rCharts Dimple plot Builder')
+  ),
   sidebarPanel(
     selectInput('dataset', 'Choose DataSet',
-                data()$results[,3]         
+      c(objects(1),data()$results[,3])
     ),
     selectInput('chartType', 'Type of Chart',
-                c('line','bubble','bar')),
+      c('line','area','bubble','bar')),
     selectInput('xType', 'Type of x Axis',
-                c('addCategoryAxis','addMeasureAxis'), selected = NULL),
+      c('addCategoryAxis','addMeasureAxis', 'addTimeAxis')),
     selectInput('yType', 'Type of y Axis',
-                c('addMeasureAxis','addCategoryAxis'), selected = NULL),
+      c('addMeasureAxis','addCategoryAxis')),
     uiOutput('variableControls')           
   ),
   mainPanel(

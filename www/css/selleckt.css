@@ -1,0 +1,168 @@
+.dropdown * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.dropdown {
+    position: relative;
+    width: 300px;
+    outline: none;
+}
+.dropdown.disabled .selected{
+    opacity: 0.6;
+}
+.dropdown > .selected {
+    position: relative;
+    font-weight: 700;
+    border: 1px solid #BBB;
+    border-radius: 4px;
+    background-color: #fdfdfd;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(253, 253, 253)), to(rgb(248, 248, 248)));
+    background-image: -webkit-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    background-image: -moz-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    background-image: -o-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    background-image: -ms-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    padding: 10px 12px;
+}
+.dropdown.focus > .selected,
+.dropdown:focus > .selected {
+    outline: none;
+}
+
+.dropdown .item.highlighted{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown > .selected:hover,
+.dropdown > .selected:focus {
+    cursor: pointer;
+}
+.dropdown > .selected i {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    bottom: 0;
+    width: 16px;
+    line-height: 40px;
+}
+.dropdown.open > .selected {
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.dropdown ul {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.dropdown .items {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: -1px;
+    width: 100%;
+    z-index: 10;
+    line-height: 1;
+    border: 1px solid #BBB;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: #fdfdfd;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(253, 253, 253)), to(rgb(248, 248, 248)));
+    background-image: -webkit-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    background-image: -moz-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    background-image: -o-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    background-image: -ms-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+}
+    .dropdown .items .itemslist {
+        max-height: 300px;
+        overflow: auto;
+    }
+    .dropdown .items .searchContainer {
+        position: relative;
+        padding: 12px 36px 12px 12px;
+        left: 0;
+        right: 0;
+    }
+    .dropdown .items .searchContainer .search {
+        width: 100%;
+    }
+.dropdown .items li {
+    position: relative;
+    display: block;
+    cursor: pointer;
+
+    font-weight: 700;
+    padding: 10px 12px;
+}
+    .dropdown .items footer {
+        padding: 10px;
+    }
+        .dropdown .items footer a {
+            cursor: pointer;
+        }
+        .dropdown .items footer hr {
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+    .dropdown .selections i.edit {
+        right: 8px;
+        visibility: hidden;
+    }
+    .dropdown .selectionItem:hover i.edit {
+        visibility: visible;
+    }
+.dropdown .items mark {
+    color: red;
+}
+.dropdown ul.selections {
+    list-style-type: none;
+}
+
+.demo-2 .dropdown ul.selections li,
+.demo-3 .dropdown ul.selections li,
+.demo-4 .dropdown ul.selections li > div {
+    position: relative;
+    padding: 5px 12px;
+    font-weight: 700;
+    border: 1px solid #BBB;
+    border-radius: 4px;
+    background-color: #fdfdfd;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(253, 253, 253)), to(rgb(248, 248, 248)));
+    background-image: -webkit-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    background-image: -moz-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    background-image: -o-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+    background-image: -ms-linear-gradient(top, rgb(253, 253, 253), rgb(248, 248, 248));
+}
+.demo-2 .dropdown ul.selections li,
+.demo-3 .dropdown ul.selections li {
+    margin: 0 0 2px 0;
+}
+.demo-4 .dropdown ul.selections li {
+    position: relative;
+}
+.demo-4 .dropdown ul.selections li > div {
+    margin: 0 30px 2px 0;
+}
+.dropdown .selections i {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    bottom: 0;
+    width: 16px;
+    line-height: 40px;
+    cursor: pointer;
+}
+.dropdown .noitemsText {
+    display: none;
+    font-weight: 700;
+    padding: 10px 12px;
+    font-style: italic;
+}
+.dropdown.noitems .noitemsText {
+    display: block;
+}
