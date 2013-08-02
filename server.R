@@ -47,7 +47,7 @@ shinyServer(function(input, output, session){
       if (!is.null(colnames(dataUse))) {
         colnames(dataUse.df) <- c("date",colnames(dataUse.df)[-1])
       } else {
-        colnames(dataUse.df) <- c("date", input$dataset)
+        colnames(dataUse.df) <- c("date", dataset)
       }
       dataUse.df$date <- format(as.Date(dataUse.df$date))
       dataUse.df <- melt(dataUse.df, id.vars = 1)
@@ -73,14 +73,18 @@ shinyServer(function(input, output, session){
       
       output$variableControls <- renderUI({
         variables <- colnames(plotdata)
-        tagList(     
-          tags$script("if ($('#x').data('selleckt')) $('#x').data('selleckt').destroy()"),
-          tags$script("if ($('#y').data('selleckt')) $('#y').data('selleckt').destroy()"),
-          tags$script("if ($('#groups').data('selleckt')) $('#groups').data('selleckt').destroy()"),                      
-          selectInput("x", "Select X", variables, selected = NULL,multiple=TRUE),
-          selectInput("y", "Select Y", variables, selected = NULL,multiple=TRUE),
-          selectInput("groups", "Select Groups", variables, selected = NULL,multiple=TRUE),
-          tags$script("$('#x,#y,#groups').selleckt()")      
+        tagList(  
+          #tags$script("if ($('#x').data('selleckt')) $('#x').data('selleckt').destroy()"),
+          #tags$script("if ($('#y').data('selleckt')) $('#y').data('selleckt').destroy()"),
+          #tags$script("if ($('#groups').data('selleckt')) $('#groups').data('selleckt').destroy()"),                      
+          #selectInput("x", "Select X", variables, selected = NULL,multiple=TRUE),
+          #selectInput("y", "Select Y", variables, selected = NULL,multiple=TRUE),
+          #selectInput("groups", "Select Groups", variables, selected = NULL,multiple=TRUE)#,
+          checkboxGroupInput("x", "Select X", variables),
+          checkboxGroupInput("y", "Select Y", variables),
+          checkboxGroupInput("groups", "Select Groups",variables),         
+          tags$script("$('#x,#y,#groups').sortable()")
+          #tags$script("$('#x,#y,#groups').selleckt()")      
         )
       })
       
