@@ -23,10 +23,13 @@ shinyServer(function(input, output, session){
   # we will have to make some assumptions here  
   #plotdata <- data.frame()
   
-  mydata <- function(dataset) {
+  data.get <- function(dataset) {
     if(exists(eval(dataset))){
       dataUse <- get(dataset)
     } else dataUse = data.frame()
+  }
+  
+  data.convert <- function(dataUse, dataset) {
     if( is.list(dataUse) || is.table(dataUse) ){
       dataUse <- data.frame(dataUse)
       return(dataUse)
@@ -60,8 +63,19 @@ shinyServer(function(input, output, session){
   
     observe({
       input$dataset  # Do take a dependency on input$dataset
+      input$datafile  # Do take a dependency on input$datafile
 
-      plotdata = mydata(input$dataset)
+      
+      if (input$uploadyes && !(is.null(input$datafile))) {
+        plotdata = data.convert(
+          read.csv(
+            input$datafile$datapath,
+            stringsAsFactors=FALSE
+          )
+        )
+      } else {
+        plotdata = data.convert(data.get((input$dataset)),input$dataset)
+      }
       
       updateSelectInput(
         session,

@@ -15,6 +15,14 @@ shinyUI(bootstrapPage(
     selectInput('dataset', 'Choose DataSet',
       c(objects(1),data()$results[,3])
     ),
+    checkboxInput(
+      'uploadyes', 'Upload Dataset'
+    ),
+    conditionalPanel(
+      condition = "input.uploadyes == '1'",
+      fileInput('datafile', 'Choose CSV File',
+                accept=c('text/csv', 'text/comma-separated-values,text/plain'))
+    ),
     selectInput('chartType', 'Type of Chart',
       c('line','area','bubble','bar')),
     selectInput('xType', 'Type of x Axis',
